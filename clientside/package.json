@@ -1,0 +1,18 @@
+{
+  "name": "clientside",
+  "version": "1.0.0",
+  "description": "restaurant chatbot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chatbot"
+  ],
+  "author": "Adeola M. Adelodun",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1"
+  }
+}
