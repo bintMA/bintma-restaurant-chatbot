@@ -18,10 +18,10 @@ app.get("/", (req, res) => {
   res.status(200).sendFile(path.join(__dirname, "public", "chat.html"));
 });
 // const app = require("../app");
-const Menu = require("./models/menu-Model");
-const Chat = require("./models/chat-Model");
-const User = require("./models/user-Model");
-const Order = require("./models/order-Model");
+const Menu = require("./models/menu-model");
+const Chat = require("./models/chat-model");
+const User = require("./models/user-model");
+const Order = require("./models/order-model");
 
 const PORT = process.env.PORT || 4000;
 const HOST = process.env.HOST || "localhost";
