@@ -8,9 +8,9 @@ const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongodb-session")(session);
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
+
 const { Server } = require("socket.io");
 
-// const moment = require("moment");
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -23,11 +23,14 @@ const Chat = require("./models/chat-Model");
 const User = require("./models/user-Model");
 const Order = require("./models/order-Model");
 
-const PORT = 4000,
-  HOST = "localhost";
+const PORT = process.env.PORT || 4000;
+const HOST = process.env.HOST || "localhost";
+const SESSION_SECRET = process.env.SESSION_SECRET;
+const SESSION_EXPIRATION_TIME = process.env.SESSION_EXPIRATION_TIME;
+const MONGODB_CONNECTION = process.env.MONGODB_CONNECTION;
 
 mongoose
-  .connect("mongodb://localhost:27017/restaurantBot")
+  .connect(MONGODB_CONNECTION)
   .then(() => {
     console.log("Connection to MongoDB Successful!");
     httpServer.listen(PORT, HOST, () => {
@@ -42,11 +45,8 @@ const httpServer = http.createServer(app);
 
 const io = new Server(httpServer);
 
-// const wrap = (midddleware) => (socket, next) =>
-//   midddleware(socket.request, {}, next);
-
 const store = new MongoStore({
-  uri: "mongodb://localhost:27017/restaurantBot",
+  uri: MONGODB_CONNECTION,
   collection: "sessions",
 });
 
@@ -55,11 +55,11 @@ store.on("error", (error) => {
 });
 
 const sessionMW = session({
-  secret: "I-am-proud-to-be-a-female-developer",
+  secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
   store: store,
-  cookie: { secure: false }, // Set secure to true if using HTTPS
+  cookie: { secure: false, maxAge: +SESSION_EXPIRATION_TIME }, // Set secure to true if using HTTPS
 });
 
 app.use(sessionMW);

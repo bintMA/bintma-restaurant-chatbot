@@ -40,7 +40,13 @@ const menuList = [
     mealType: "dessert",
     mealNo: "8",
   },
-  { name: "rice pudding", price: "2200", mealType: "starter", mealNo: "9" },
+  {
+    name: "rice pudding",
+    price: "2200",
+    mealType: "starter",
+    mealNo: "9",
+  },
+
   //   {
   //     name: "potatoes and vegetable soup",
   //     price: "87",

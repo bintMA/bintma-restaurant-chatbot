@@ -26,6 +26,10 @@ socket.on("connect", () => {
   displayGreetings();
 });
 
+// socket.on("botMessage", (data) => {
+//   displayMenu(data);
+// });
+
 socket.on("loadChatHistory", (userChatHistory) => {
   displayChatHistory(userChatHistory);
 });
@@ -40,7 +44,8 @@ socket.on("botMessage", ({ type, data }) => {
 
     case "currentOrder":
       displayCurrOrder(data, true);
-      console.log("99");
+      // console.log("99");
+      displayOptions(options);
       break;
 
     case "orderHistory":
