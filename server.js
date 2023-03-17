@@ -17,6 +17,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
   res.status(200).sendFile(path.join(__dirname, "public", "chat.html"));
 });
+
+app.get("/", (req, res) => {
+  res.sendStatus(200);
+});
+
 // const app = require("../app");
 const Menu = require("./models/menu-model");
 const Chat = require("./models/chat-model");
