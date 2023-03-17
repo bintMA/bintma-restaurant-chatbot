@@ -50,9 +50,9 @@ const store = new MongoStore({
   collection: "sessions",
 });
 
-store.on("error", (error) => {
-  console.log(error);
-});
+// store.on("error", (error) => {
+//   console.log(error);
+// });
 
 const sessionMW = session({
   secret: SESSION_SECRET,
@@ -95,22 +95,23 @@ io.on("connection", async (socket) => {
     user = await User.findOne({ userId: userID });
   }
   console.log(session.userId);
-  //   // Load Chat History
+
+  // // Load Chat History
   // const userChatHistory = await Chat.find({
   //   userId: user._id,
   // });
   // socket.emit("loadChatHistory", userChatHistory);
-  //   Initial Msg
+
+  //   Initial Message
   socket.emit("botInitialMsg", Object.values(options[0]));
+
   // Save Chat
   socket.on("saveMsg", async (chat, isBotMsg) => {
     const chatMsg = await Chat.create({
       userId: user._id,
       chatMsg: chat,
       isBotMsg,
-      // time: moment.now("h:mm n"),
     });
-    // console.log(chatMsg);
   });
 
   socket.on("msgInput", async (chatInput) => {
@@ -140,8 +141,8 @@ io.on("connection", async (socket) => {
           });
         } else {
           socket.emit("botMessage", {
-            type: null,
-            data: { message: "you didn't select any order." },
+            type: "invalidInput",
+            data: { message: "You didn't select any order." },
           });
         }
 
@@ -160,8 +161,7 @@ io.on("connection", async (socket) => {
           socket.emit("botMessage", {
             type: null,
             data: {
-              message:
-                "please place an order!! you don't have any order with us",
+              message: "You don't have an order, Kindly place an order.",
             },
           });
         }
@@ -178,7 +178,7 @@ io.on("connection", async (socket) => {
         } else {
           socket.emit("botMessage", {
             type: null,
-            data: { message: "No current order." },
+            data: { message: "You don't have a current order." },
           });
         }
         break;

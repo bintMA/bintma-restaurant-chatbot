@@ -18,9 +18,9 @@ inputCon.addEventListener("submit", (e) => {
   }
 });
 
-// socket.io.on("error", (error) => {
-//   console.log(error);
-// });
+socket.io.on("error", (error) => {
+  console.log(error);
+});
 
 socket.on("connect", () => {
   displayGreetings();
@@ -44,7 +44,6 @@ socket.on("botMessage", ({ type, data }) => {
 
     case "currentOrder":
       displayCurrOrder(data, true);
-      // console.log("99");
       displayOptions(options);
       break;
 
