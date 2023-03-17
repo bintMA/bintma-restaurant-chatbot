@@ -3,6 +3,7 @@ const http = require("http");
 const fs = require("fs/promises");
 const path = require("path");
 const mongoose = require("mongoose");
+const PORT = process.env.PORT || 4000;
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongodb-session")(session);
@@ -230,4 +231,9 @@ io.on("connection", async (socket) => {
         break;
     }
   });
+  
+   httpServer.listen(PORT, HOST, () => {
+    console.log("Server running on port", PORT);
+  });
+  
 });
