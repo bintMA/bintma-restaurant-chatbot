@@ -29,8 +29,8 @@ const Chat = require("./models/chat-model");
 const User = require("./models/user-model");
 const Order = require("./models/order-model");
 
-const PORT = process.env.PORT || 4000;
-const HOST = process.env.HOST || "localhost";
+// const PORT = process.env.PORT || 4000;
+// const HOST = process.env.HOST || "localhost";
 const SESSION_SECRET = process.env.SESSION_SECRET;
 const SESSION_EXPIRATION_TIME = process.env.SESSION_EXPIRATION_TIME;
 const MONGODB_CONNECTION = process.env.MONGODB_CONNECTION;
@@ -40,7 +40,7 @@ mongoose
   .connect(MONGODB_CONNECTION)
   .then(() => {
     console.log("Connection to MongoDB Successful!");
-    httpServer.listen(PORT, HOST, () => {
+    httpServer.listen(PORT, () => {
       console.log("Server running on port", PORT);
     });
   })
@@ -232,7 +232,7 @@ io.on("connection", async (socket) => {
     }
   });
   
-   httpServer.listen(PORT, HOST, () => {
+   httpServer.listen(PORT, () => {
     console.log("Server running on port", PORT);
   });
   
