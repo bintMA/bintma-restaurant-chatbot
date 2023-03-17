@@ -9,6 +9,12 @@ const MongoStore = require("connect-mongodb-session")(session);
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
+const PORT = process.env.PORT || 4000;
+const HOST = process.env.HOST || "localhost";
+const SESSION_SECRET = process.env.SESSION_SECRET;
+const SESSION_EXPIRATION_TIME = process.env.SESSION_EXPIRATION_TIME;
+const MONGODB_CONNECTION = process.env.MONGODB_CONNECTION;
+
 const { Server } = require("socket.io");
 
 const app = express();
@@ -27,12 +33,6 @@ const Menu = require("./models/menu-model");
 const Chat = require("./models/chat-model");
 const User = require("./models/user-model");
 const Order = require("./models/order-model");
-
-const PORT = process.env.PORT || 4000;
-const HOST = process.env.HOST || "localhost";
-const SESSION_SECRET = process.env.SESSION_SECRET;
-const SESSION_EXPIRATION_TIME = process.env.SESSION_EXPIRATION_TIME;
-const MONGODB_CONNECTION = process.env.MONGODB_CONNECTION;
 
 //mongoose connection
 mongoose
