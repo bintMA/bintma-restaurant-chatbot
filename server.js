@@ -1,7 +1,7 @@
-const fs = require("fs/promises");
-const http = require("http");
-const path = require("path");
 const express = require("express");
+const http = require("http");
+const fs = require("fs/promises");
+const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
@@ -34,6 +34,7 @@ const SESSION_SECRET = process.env.SESSION_SECRET;
 const SESSION_EXPIRATION_TIME = process.env.SESSION_EXPIRATION_TIME;
 const MONGODB_CONNECTION = process.env.MONGODB_CONNECTION;
 
+//mongoose connection
 mongoose
   .connect(MONGODB_CONNECTION)
   .then(() => {
@@ -55,9 +56,9 @@ const store = new MongoStore({
   collection: "sessions",
 });
 
-// store.on("error", (error) => {
-//   console.log(error);
-// });
+store.on("error", (error) => {
+  console.log(error);
+});
 
 const sessionMW = session({
   secret: SESSION_SECRET,
