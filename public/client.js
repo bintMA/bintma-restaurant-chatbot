@@ -18,9 +18,9 @@ inputCon.addEventListener("submit", (e) => {
   }
 });
 
-socket.io.on("error", (error) => {
-  console.log(error);
-});
+// socket.io.on("error", (error) => {
+//   console.log(error);
+// });
 
 socket.on("connect", () => {
   displayGreetings();
