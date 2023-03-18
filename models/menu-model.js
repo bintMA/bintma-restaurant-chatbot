@@ -46,25 +46,6 @@ const menuList = [
     mealType: "starter",
     mealNo: "9",
   },
-
-  //   {
-  //     name: "potatoes and vegetable soup",
-  //     price: "87",
-  //     mealType: "main",
-  //     mealNo: "10",
-  //   },
-  //   {
-  //     name: "apple pie",
-  //     price: "45",
-  //     mealType: "desert",
-  //     mealNo: "11",
-  //   },
-  //   {
-  //     name: "stir-fry rice sticks",
-  //     price: "8000",
-  //     mealType: "main",
-  //     mealNo: "12",
-  //   },
 ];
 
 // (async () => {
