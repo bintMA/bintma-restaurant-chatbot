@@ -22,7 +22,7 @@ Once you enter the application you get to see options to place an order, checkou
 3. After checking out the order is placed and saved in the database. Each user have a unique sesion ID and this ID is used to save all user message inside the database, so, after reloading the user can still get their chat history
    After every reload the still get his/her chat history for future refrences
 
-### 1. Main Dependencies
+### Main Dependencies
 
 - **node.js** and **express** as the JavaScript runtime environment and server framework
 - **mongodb** preferred database
@@ -88,7 +88,7 @@ npm install
 
    - Create 2 MongoDB databases on your local MongoDB server or in the cloud (Atlas)
    - Copy the connection strings and assign it to the `MONGODB_CONNECTION_URL` and other environment variables in the ex.env file each.
-   - On connection to these databases, four collections - `users`,`chat`,`order`,`session`and `Menus` will be created.
+   - On connection to these databases, four collections - `users`,`chats`,`orders`,`menus`and `sessions` will be created.
 
 5. **Run the development server:** bash or command prompt
 
