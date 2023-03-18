@@ -124,3 +124,14 @@ footer {
   color: #8a151b;
   text-decoration: underline;
 }
+
+@media screen and (min-width: 370px) and (max-width: 450px) {
+  .chat-window {
+    width: 135%;
+    height: 640px;
+    margin: 5px auto;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    overflow-y: scroll;
+  }
+}
